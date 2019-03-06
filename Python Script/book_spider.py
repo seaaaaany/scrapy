@@ -4,7 +4,6 @@ import scrapy
 class BooksSpider(scrapy.Spider):
     # identify each spider
     name = 'books'
-
     # set the url
     start_urls = ['http://books.toscrape.com/']
 
@@ -22,11 +21,10 @@ class BooksSpider(scrapy.Spider):
                 'name': name,
                 'price': price,
             }
-
-    # retrieve the url
-    # the 'Next Page's url is under the ul.paper > li.next >a
-    next_url = response.css('ul.pager li.next a::attr(href)').extract_first()
-    if next_uil:
-        # if find the next ulr, get the absolute path, establish the new request target
-        next_url = response.urljoin(next_url)
-        yeildscrapy.Request(next_url, callback=self.parse)
+            # retrieve the url
+            # the 'Next Page's url is under the ul.paper > li.next >a
+            next_url = response.css('ul.pager li.next a::attr(href)').extract_first()
+        if next_url:
+            # if find the next ulr, get the absolute path, establish the new request target
+            next_url = response.urljoin(next_url)
+            yield scrapy.Request(next_url, callback=self.parse)
