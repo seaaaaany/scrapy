@@ -7,7 +7,7 @@ class BooksSpider(scrapy.Spider):
     # set the url
     start_urls = ['http://books.toscrape.com/']
 
-    def parse(self, respone):
+    def parse(self, response):
         # retrieve data
         # the information of each book are under the <article class='product_pod]'
         # we are using css() to lookup all the article elements
