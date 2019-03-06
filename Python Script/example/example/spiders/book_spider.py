@@ -21,9 +21,10 @@ class BooksSpider(scrapy.Spider):
                 'name': name,
                 'price': price,
             }
-            # retrieve the url
-            # the 'Next Page's url is under the ul.paper > li.next >a
-            next_url = response.css('ul.pager li.next a::attr(href)').extract_first()
+        # retrieve the url
+        # the 'Next Page's url is under the ul.paper > li.next >a
+        next_url = response.css('ul.pager li.next a::attr(href)').extract_first()
+
         if next_url:
             # if find the next ulr, get the absolute path, establish the new request target
             next_url = response.urljoin(next_url)
