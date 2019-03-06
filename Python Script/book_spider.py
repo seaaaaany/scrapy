@@ -29,4 +29,4 @@ class BooksSpider(scrapy.Spider):
     if next_uil:
         # if find the next ulr, get the absolute path, establish the new request target
         next_url = response.urljoin(next_url)
-        yeild scrapy.Request(next_url, callback=self.parse)
+        yeildscrapy.Request(next_url, callback=self.parse)
